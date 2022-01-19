@@ -17,11 +17,11 @@
 
 ## Introduction
 ### Summary
-The `Random Shiba Inu Collage Generator` allows the user to generate a collage of randomly colored shiba inus. The user can specify the number of shiba inus they want on the collage and name the collage before the program saves the image. 
+`Random Shiba Inu Collage Generator` allows users to generate a collage of randomly colored shiba inus. Users can specify the number of shiba inus they want on the collage and name the collage before the program saves the image. 
 ### Motivation
 My interest in art and the rising popularity of NFTs have inspired me to work on this project. I have been making digital art for a couple of years but it mostly involved drawing on a tablet. However, after browsing through some generative art online, I thought it would be cool to give generative art a try too, starting from simple pixel patterns.
 
-Since I have recently started using Python, I think this would be a fun exercise for me to familiarize myself with some basic programming concepts in Python such as using the NumPy and Pillow libraries, lists, and writing methods. Publishing a repo is also a way to familiarize myself GitHub and document any learnings throughout the development process.
+Since I have recently started using Python, I think this would be a fun exercise for me to familiarize myself with some basic programming concepts in Python such as using the NumPy and Pillow libraries, lists, and writing methods. Publishing a repo is also a way to familiarize myself with GitHub and document any learnings throughout the development process.
 
 ### Technologies
 ![python](https://img.shields.io/badge/Python-3.10.1-blue) ![pillow](https://img.shields.io/badge/Pillow-9.0.0-blue) ![numpy](https://img.shields.io/badge/NumPy-1.22.0-blue)
@@ -33,7 +33,7 @@ Since I have recently started using Python, I think this would be a fun exercise
 * Pillow installation: [Install](https://pillow.readthedocs.io/en/stable/installation.html)
 * NumPy installation: [Install](https://numpy.org/install/)
 
-This is a great guide on how to run a Python script from GitHub:
+This is a great guide on how to run Python scripts from GitHub:
 [How to Run Scripts from Github](https://projectdestroyer.com/2018/01/run-scripts-github/).
 
 For reference, the following steps can be taken to clone the repo and run the script in Windows Command Prompt:
@@ -60,7 +60,7 @@ After receiving the row and column inputs, the program will ask the user to name
 What do you want to name your collage?
 Please enter alphabets with no spaces or symbols: 
 ```
-The program will display `Generation complete!` after the collage is saved in the same folder as the local git repo clone. After the collage is generated and saved, the program will ask whether the user want to generate another collage. 
+The program will display `Generation complete!` after the collage is saved in the same folder as the local git repo clone. After the collage is generated and saved, the program will ask whether the user wants to generate another collage. 
 
 ### Examples
 ![shibe](https://user-images.githubusercontent.com/66938562/149647277-f9ab8489-d4d0-4d91-b39f-191a4063b06b.png)
@@ -79,7 +79,7 @@ The program will display `Generation complete!` after the collage is saved in th
 ### Drafting the Pattern
 The pattern is created through placing different RGB tuples in a 2D list, then converting that list into an Image object through NumPy and Pillow. For more details, "Create Your Unique "Pixel Art Avatar" in Python" by Tommaso De Ponti in the [Credits](#credits) section does a great job explaining the process. 
 
-Essentially, all pixels that share the same color should be represented by the same RGB tuples. For instance, in `shibe_generator.py`, I have placed a RGB tuple named "bg" at every index in the 2D array that is intended to be the background. Generating an image from a list is not intuitive as it is difficult to determine what the final image would look like. On top of that, the process of typing out the array is very tedious. I spoke with Brett Palatiello who launched the Columbia Lion NFT and he suggested to plan out the pattern in Excel.
+Essentially, all pixels that share the same color should be represented by the same RGB tuples. For instance, in `shibe_generator.py`, I have placed a RGB tuple named "bg" at every index in the 2D array that is intended to be the background. Generating an image from a list is not intuitive since it is difficult to determine what the final image would look like. On top of that, the process of typing out the array is very tedious. I spoke with Brett Palatiello who launched the Columbia Lion NFT and he suggested to plan out the pattern in Excel.
 
 ![image](https://user-images.githubusercontent.com/66938562/149677972-780c6132-f8db-4d50-94cf-6ffb8fd040e6.png)
 *A draft of the shiba inu pattern in Excel*
@@ -91,27 +91,27 @@ This section documents the concepts I learned via developing this project. Some 
 
 #### Python Functions (def)
 
-Like Java methods, Python functions support reusability and keep the script more concise. For instance, I made `input_value()` a function because the process of assigning a value to row and column is essentially the same.
+Like Java methods, Python functions support reusability and keep the script more concise. For instance, I made `input_value()` a function because the processes of assigning values to rows and columns are essentially the same.
 
 #### Lambda Functions
 
-Lambda function is a function with a more concise syntax similar to a lambda function in Java or a anonymous function in JavaScript. It makes the code look cleaner especially when the code block is short. I've used a lambda function for random color generation for this reason.
+Lambda function is a function with a more concise syntax similar to a lambda function in Java or an anonymous function in JavaScript. It makes the code look cleaner especially when the code block is short. I've used a lambda function for random color generation for this reason.
 
 #### Try-Except Statement
 
-This is similar to Java's try-catch statement. I have included a try-except statement nested in a while loop for all user inputs. That way I can ensure the user enters a valid input. The script will remain in the while loop until the user enters a valid input instead of terminating and throwing an exception. Similar to Java, you can also throw an exception when the input fits a certain set of conditions. For instance, the script will throw a `ValueError` when `not input_name.isalnum()`. In other words, the `except` statement will run if a user inputs anything that is not an alphanumeric string.
+This is similar to Java's try-catch statement. I have included a try-except statement nested in a while loop for all user inputs. That way I can ensure the user enters a valid input. Instead of throwing an exception, the script will remain in the while loop until the user enters a valid input. Similar to Java, you can also throw an exception when the input fits a certain set of conditions. For instance, the script will throw a `ValueError` when `not input_name.isalnum()`. In other words, the `except` statement will run if a user inputs anything that is not an alphanumeric string.
 
 #### Image module
 
-Through this exercise, I've learned to use some of the functions in the `Image` module. This includes creating a new Image object, pasting and resizing, and converting an array into an Image object.
-* **Resampling**: Resampling comes up as an option in resizing. Since I am increasing the size of each image after they're being generated, interpolation occurs to make up for the missing pixels. I am using the `NEAREST` filter, which means the missing pixels are interpolated through assigning the value of the nearest pixel. The disadvantage of this is the output may have jagged edges, which is exactly what we want in a pixel art. `NEAREST` is also the default option if no filter is being specified in the `resize()` function and it has the best performance due to simplicity. There are 5 other options: `BICUBIC`, `BILINEAR`, `BOX`, `HAMMING`, and `LANCZOS`. `BOX` would also work in this case, because it makes up for the missing pixels with identical weights. In upscaling, it is equivalent to `NEAREST`. Meanwhile all other methods survey from more neighboring pixels. For instance, the `BILINEAR` filter surveys from the 4 closest pixels (2x2) and fills in the missing pixels with a weighted average output. It makes sense that the output would be blurry and smooth because of anti aliasing. For more information, check out: [Pillow Handbook](https://pillow.readthedocs.io/en/stable/handbook/concepts.html#filters) and [Interpolation Methods](https://climserv.ipsl.polytechnique.fr/documentation/idl_help/Interpolation_Methods.html).
+Through this exercise, I've learned to use some of the functions in the `Image` module. These include creating a new Image object, pasting and resizing, and converting an array into an Image object.
+* **Resampling**: Resampling is an option in `resize()`. Since I am increasing the size of each image after they're being generated, interpolation occurs to make up for the missing pixels. I am using the `NEAREST` filter, which means the missing pixels are interpolated through assigning the value of the nearest pixel. The disadvantage of this is the output may have jagged edges, which is exactly what we want for pixel art. `NEAREST` is also the default option if no filter is being specified in the `resize()` function and it has the best performance due to simplicity. There are 5 other options: `BICUBIC`, `BILINEAR`, `BOX`, `HAMMING`, and `LANCZOS`. `BOX` would also work in this case, because it makes up for the missing pixels with identical weights. In upscaling, it is equivalent to `NEAREST`. Meanwhile all other methods survey from more than 1 neighboring pixels. For instance, the `BILINEAR` filter surveys from the 4 closest pixels (2x2) and fills in the missing pixels with a weighted average output. It makes sense that the output would be blurry and smooth because of anti-aliasing. For more information, check out: [Pillow Handbook](https://pillow.readthedocs.io/en/stable/handbook/concepts.html#filters) and [Interpolation Methods](https://climserv.ipsl.polytechnique.fr/documentation/idl_help/Interpolation_Methods.html).
 ![image](https://user-images.githubusercontent.com/66938562/149853634-5449e4aa-de59-48a2-b1c7-278880f643ef.png)
 
 * **Image.fromArray (NumPy array)**: The Pillow `fromArray()` function only takes an array with uint8 values. Hence it will not accept a Python list because it is not type-safe or fixed in size. This makes sense because an RGB pixel is represented by 3 unsigned bytes (0-255, 0-255, 0-255). The NumPy array function helps us convert a regular Python list into an array of unsigned 1-byte integers. That way we can feed the array to the `fromArray()` function and generate an image.
 For more information, check out: [Image Processing with NumPy](https://www.pythoninformer.com/python-libraries/numpy/numpy-and-images/).
 
 ### Further Development
-Going forward, I would like to add more accessories (i.e. sunglasses, hats...etc.) onto the shiba inus to make images more interesting on a standalone basis. For this exercise, I've decided to make a collage generator because I wanted to familiarize myself with lists and using libraries like Pillow and NumPy. However, my ultimate goal is to create a collection of NFTs which I will mint on Solsea, a Solana-based NFT marketplace. I will make another repo after minting the NFTs.
+Going forward, I would like to add more accessories (i.e. sunglasses, hats...etc.) onto the shiba inus to make each pattern more interesting on a standalone basis. For this exercise, I've decided to make a collage generator because I wanted to familiarize myself with Python. However, my ultimate goal is to create a collection of NFTs which I will mint on Solsea, a Solana-based NFT marketplace. I will make another repo after minting the NFTs.
 
 ## Credits
 I used the following resources to develop this project:
