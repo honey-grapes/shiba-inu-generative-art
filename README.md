@@ -19,7 +19,7 @@
 ### Summary
 `Random Shiba Inu Collage Generator` allows users to generate a collage of randomly colored shiba inus. Users can specify the number of shiba inus they want on the collage and name the collage before the program saves the image. 
 ### Motivation
-My interest in art and the rising popularity of NFTs have inspired me to work on this project. I have been making digital art for a couple of years but it mostly involved drawing on a tablet. However, after browsing through some generative art online, I thought it would be cool to give generative art a try too, starting from simple pixel patterns.
+I have been making digital art for a couple of years but it mostly involved drawing on a tablet. However, after browsing through some generative art online, I thought it would be cool to give generative art a try too, starting from simple pixel patterns.
 
 Since I have recently started using Python, I think this would be a fun exercise for me to familiarize myself with some basic programming concepts in Python such as using the NumPy and Pillow libraries, lists, and writing methods. Publishing a repo is also a way to familiarize myself with GitHub and document any learnings throughout the development process.
 
@@ -109,9 +109,6 @@ Through this exercise, I've learned to use some of the functions in the `Image` 
 
 * **Image.fromArray (NumPy array)**: The Pillow `fromArray()` function only takes an array with uint8 values. Hence it will not accept a Python list because it is not type-safe or fixed in size. This makes sense because an RGB pixel is represented by 3 unsigned bytes (0-255, 0-255, 0-255). The NumPy array function helps us convert a regular Python list into an array of unsigned 1-byte integers. That way we can feed the array to the `fromArray()` function and generate an image.
 For more information, check out: [Image Processing with NumPy](https://www.pythoninformer.com/python-libraries/numpy/numpy-and-images/).
-
-### Further Development
-Going forward, I would like to add more accessories (i.e. sunglasses, hats...etc.) onto the shiba inus to make each pattern more interesting on a standalone basis. For this exercise, I've decided to make a collage generator because I wanted to familiarize myself with Python. However, my ultimate goal is to create a collection of NFTs which I will mint on Solsea, a Solana-based NFT marketplace. I will make another repo after minting the NFTs.
 
 ## Credits
 I used the following resources to develop this project:
