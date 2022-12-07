@@ -12,7 +12,6 @@
 * [Development Process](#development-process)
   *  [Drafting the Pattern](#drafting-the-pattern)
   *  [Learnings](#learnings)
-* [Further Development](#further-development)
 * [Credits](#credits)
 
 ## Introduction
